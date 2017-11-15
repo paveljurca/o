@@ -25,7 +25,7 @@ my $msg = {
 };
 
 # base dir
-my $root = catdir('oikumena');
+my $root = catdir(dirname($0), 'oikumena');
 # file entries
 my $file = {
   # index.html
@@ -75,7 +75,7 @@ sub oikumena {
 
     # ---------------------
 
-    $cursor->{heading} //= '';
+    $cursor->{term} //= '';
 
     # ---------------------
 
@@ -85,7 +85,7 @@ sub oikumena {
    
     my $playlist_filepath = clean_filepath(
         $file->{dir_pl},
-        $cursor->{heading},
+        $cursor->{term},
         # use IDENT key or 5 digits for a filename
         $cursor->{ident} || int(rand()*100000)
     ).'.html';
@@ -98,7 +98,7 @@ sub oikumena {
 
     # ---------------------
    
-    my $DOM = \$term{$cursor->{heading}};
+    my $DOM = \$term{$cursor->{term}};
 
     # <!-- TERM -->
     unless ($$DOM) {

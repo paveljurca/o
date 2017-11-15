@@ -1,3 +1,5 @@
+#!/bin/bash
+
 
 # development repo (current)
 
@@ -7,24 +9,18 @@ source="$(pwd)"
 
 build="$1"
 
-# ============= RUN ===================
+# ============= BUILD =================
 
 cd "$build"
 
-perl "$source/oikumena.pl" >build.json
-cp -Rf "$source/oikumena/public" "$build/."
+perl "$source/oikumena.pl" >build.json \
+  && cp -Rf "$source/oikumena/public" "$build/." \
+  && echo "OK"
 
-#mv -f build.json $live/.
-#mv -f index.html $live/.
-#mv -f o/ $live/.
-
-# =========== PUSH LIVE ===============
+# =========== GIT PUSH ================
 
 #git add .
+
 #git commit -m "$(date)"
-##git push origin gh-pages
+
 #git push origin master
-
-# =====================================
-
-echo "OK"

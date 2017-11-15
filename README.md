@@ -1,19 +1,17 @@
 # Light web frontend to YouTube playlists
 
-Works with any video service that supports video embedding. See the `video.tt.html` template backed by a JSON file, specifically those `playlist_url` and `playlist_id` keys.
+Works with any video service that supports video embedding. See the `video.tt.html` template and a JSON data file, specifically those `playlist_url` and `playlist_id` keys.
 
 __USECASE:__
 
 [Recordings of school lectures](https://www.youtube.com/channel/UCEQZNCGGr2SgUb3LNp0-qaA/playlists) put on YouTube
-miss some additional/organizational data, ordering, search or proper representation. This is not suitable to students
-nor the school staff when it comes to views.
+miss some additional data, ordering, search or proper representation. This is not suitable to students
+nor a teacher when it comes to views.
 
 With a single JSON file and a few thumbnails we can improve that experience.
-*Better experience* to me means *more approachable* lectures and that means more students who are going to watch it.
+*Better experience* to me means *more approachable* lectures and that means more students who are going to watch them.
 
-
-![](PRINTSCREEN)
-
+![PRINTSCREEN](printscreen/1.png "Oikumena.cz")
 
 ## SYNOPSIS
 
@@ -21,16 +19,21 @@ With a single JSON file and a few thumbnails we can improve that experience.
 
 ## RELEASE NOTES
 
-* For sort to work, terms should be in the following format `\w{2} \d{4}/\d{2}`, i.e. "LS 2015/16"
-* If present, filenames for the video html files are taken from the relevant JSON **CODE** key
-* Using a JSON document-like model it is eventually easy to implement a filter to group by **Teacher** or **Time**
+* For sort to work, school terms should be in the following format `\w{2} \d{4}/\d{2}`, i.e. "LS 2015/16"
+* If present, filenames for the video html files are taken from the relevant **CODE** key
+* Using a JSON document-like model it is eventually easy to group by any key
+
+(+) Depends only on core modules
+(-) Uses my very own template engine :))
 
 ## TODO
 
-- [ ] BUILD: Create a ZIP file you can easily extract and deploy on any web server
 - [x] Template UTF-8 support
 
   The error: _"Reading from in-memory file handle: *Strings with code points over 0xFF may not be mapped into in-memory file handles."_
+
+
+*(Idea)* Make final ZIP file one can easily deploy on any web server
 
 #### COMMIT LOG
 
