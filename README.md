@@ -1,50 +1,40 @@
-# Simple frontend to video playlists
+# Light web frontend to YouTube playlists
 
+Works with any video service that supports video embedding. See the `video.tt.html` template backed by a JSON file, specifically those `playlist_url` and `playlist_id` keys.
 
-any video service that supports video embedding
+__USECASE:__
 
+[Recordings of school lectures](https://www.youtube.com/channel/UCEQZNCGGr2SgUb3LNp0-qaA/playlists) put on YouTube
+miss some additional/organizational data, ordering, search or proper representation. This is not suitable to students
+nor the school staff when it comes to views.
+
+With a single JSON file and a few thumbnails we can improve that experience.
+*Better experience* to me means *more approachable* lectures and that means more students who are going to watch it.
 
 
 ![](PRINTSCREEN)
 
 
-Recordings of lectures YouTube
+## SYNOPSIS
 
-
-
-
+`./build.sh DESTINATION_FOLDER`
 
 ## RELEASE NOTES
 
-
 * For sort to work, terms should be in the following format `\w{2} \d{4}/\d{2}`, i.e. "LS 2015/16"
-* The JSON "code" key (if present) is taken for a filename
-
-Having a JSON document-like model filtering by keys such as Room, Teacher or Time can be easily implemented then.
+* If present, filenames for the video html files are taken from the relevant JSON **CODE** key
+* Using a JSON document-like model it is eventually easy to implement a filter to group by **Teacher** or **Time**
 
 ## TODO
 
-- [ ] [BUILD PROCESS] Create a ZIP file you can just extract and put on any web server
+- [ ] BUILD: Create a ZIP file you can easily extract and deploy on any web server
 - [x] Template UTF-8 support
 
   The error: _"Reading from in-memory file handle: *Strings with code points over 0xFF may not be mapped into in-memory file handles."_
 
-## LICENSE 
-
-Isotope is distributed under the GPLv3, see https://www.gnu.org/licenses/gpl-3.0.html.
-
-Released into the public domain.
-
-## DISCLAIMER
-
-Don't blame me.
-
 #### COMMIT LOG
 
-
-    ...
-    ...
-    ...
+    [..]
 
     commit 59be89aa0f66463c32a91feb1dd277c8587f9cae
     Author: Pavel Jurča <paveljurca@users.noreply.github.com>
@@ -104,16 +94,23 @@ Don't blame me.
     Author: Pavel Jurča <paveljurca@users.noreply.github.com>
     Date:   Thu Oct 20 13:41:11 2016 +0200
 
-        testing the HTTP/S
+        source file URIs
 
     commit bd579bd614413d7f826eae0526d9a044ea25e6f9
     Author: Pavel Jurča <paveljurca@users.noreply.github.com>
     Date:   Thu Oct 20 13:13:24 2016 +0200
 
-        custom 404 and youtube skeleton
+        custom 404, youtube embed skeleton
 
 
-    ...
-    ...
-    ...
+    [..]
 
+## LICENSE 
+
+Isotope is distributed under the GPLv3, see https://www.gnu.org/licenses/gpl-3.0.html.
+
+Released into the public domain.
+
+## DISCLAIMER
+
+Don't blame me.

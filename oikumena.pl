@@ -24,26 +24,26 @@ my $msg = {
   build         => sub {q({"build":").shift.q(","timestamp":").shift.q("})},
 };
 
+# base dir
+my $root = catdir('oikumena');
 # file entries
 my $file = {
-  # root dir
-  root        => catdir('oikumena'),
-  # playlist dir
-  dir_pl      => catdir('o'),
-  # JSON file
-  data        => catfile('data', 'oikumena.json'),
   # index.html
   index       => catfile('index.html'),
-  # HEADING template
-  tt_heading  => catfile('template', 'term.tt.html'),
-  # ITEM template
-  tt_item => catfile('template', 'course.tt.html'),
+  # make dir
+  dir_pl      => catdir('o'),
+  # TERM template
+  tt_heading  => catfile($root, 'html', 'template', 'term.tt.html'),
+  # COURSE template
+  tt_item     => catfile($root, 'html', 'template', 'course.tt.html'),
   # VIDEO template
-  tt_video    => catfile('template', 'video.tt.html'),
+  tt_video    => catfile($root, 'html', 'template', 'video.tt.html'),
   # HEADER html
-  html_header => catfile('template', 'header.html'),
+  html_header => catfile($root, 'html', 'static', 'header.html'),
   # FOOTER html
-  html_footer => catfile('template', 'footer.html'),
+  html_footer => catfile($root, 'html', 'static', 'footer.html'),
+  # JSON file
+  data        => catfile($root, 'data', 'oikumena.json'),
 };
 
 # === RUN ===
@@ -292,7 +292,7 @@ sub template {
 
 =head2 sort_custom
 
-Sort by the latest school term
+Sort by the latest semester
 
 in:   list of terms
 out:  sorted list
@@ -300,6 +300,7 @@ out:  sorted list
 =cut
 
 sub sort_custom {
+  # sort by terms descending
   return sort {
     my $rx_year = qr/(\d{2})$/;
     my $rx_term = qr/^(.{2})/;
